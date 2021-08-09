@@ -1,0 +1,101 @@
+git常用命令
+	
+	配置用户信息：
+		git config --global user.name "xx"
+		 git config --global user.email xx
+	设置git默认使用到文本编辑器：
+		git config --global core.editor subl
+	差异分析工具：
+		git config --global merge.tool vimdiff
+	查看配置信息
+		git config --list
+	可以再.gitconfig文件中 配置变量
+			 
+
+
+
+	git init  使用当前目录初始化仓库
+	git init ab 使用指定ab目录初始化仓库
+	git clone xxxx      克隆已有仓库	
+	git clone xxxx  ab  克隆已有仓库到ab目录
+	git status   查看仓库现在到状态
+	git diff     比较文件到不同，即暂存区和工作目录到差异
+	git reset    回退版本
+	git rm       删除工作区到文件
+	git mv       移动或重命名工作区到文件
+
+	git log		查看历史提交记录
+			--online	查看历史记录到简洁版本
+			--graph 	查看历史什么时候出现的分支
+			--reverse   逆向显示
+			--author=gui  查看指定用户的提交日志
+
+	git blame filename	 以列表形式查看制定文件到历史修改记录
+
+	git remote						远端仓库操作
+				-v 					查看现有关联
+				add  [aliasname]  url   添加一个远端仓库并指定一个简单到名字
+				rm  aliasname			删除远端仓库关联
+
+
+	git fetch		从远端创建获取代码库
+	git pull		下载远程代码并合并
+	git push		上传到远程仓库并合并
+				-u [aliasname] master  本地xx上传到远端master
+
+
+
+	
+	git add **文件  添加到暂存区
+	git add  *	
+	git commit -m "代码提交信息"	 提交改动到本地仓库（head）
+	git push origin master		推送更改到远端仓库
+
+
+	关联远端仓库
+	git remote add origin xxx
+
+
+###如果操作失误， 可用命令替换掉本地改动
+	git checkout -- filename
+	这个命令会使用head 中最新内容替换掉你制定到文件， 已添加到暂存区到改动以及新文件都不会受影响
+
+	若你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它：
+		git fetch origin
+		git reset --hard origin/master
+
+###分支 
+    切换分支的时候，Git 会用该分支的最后提交的快照替换你的工作目录的内容， 所以多个分支不需要多个目录。
+
+    git branch  			列出分支
+	git branch  branchname  创建分支
+	git checkout branchname 切换到分支
+	git checkout -b ac		创建ac分支丙切换过去
+	git branch -d ac		删除ac分支
+	git merge   			合并分支
+
+	推送分支到远端仓库，别人才能看到
+	git push origin ac	
+
+	合并其他分支到当前分支
+	git merge ac	
+
+	合并改动之前，你可以使用如下命令预览差异：
+	git diff <source_branch> <target_branch>
+
+
+###标签
+	创建一个1.0到标签
+	git tag  1.0 21j2jj21j
+	21j2jj21j是想要标记到提交id的前10位字符、，可用 git log 获命令取提交id
+
+
+更新本地仓库至最新改动
+	git pull
+
+
+其他命令
+	内建的图形化： gitk
+	彩色输出： git config  color.ui true
+	设置历史记录，每个提交只显示一行： git config format.pretty oneline
+	交互式添加到暂存区： git add  -i 
