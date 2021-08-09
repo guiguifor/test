@@ -1,0 +1,91 @@
+alignment  bottom_right #top_right
+default_color white
+double_buffer yes
+no_buffers yes
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_type normal
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+own_window_colour 000000
+own_window_argb_visual yes
+own_window_argb_value 0
+double_buffer yes
+draw_shades yes
+draw_outline no
+draw_borders no
+draw_graph_borders yes #n0
+#minimum_size 596 50
+maximum_width 606
+default_color ffffff
+default_shade_color 000000
+default_outline_color 000000
+gap_x 6
+gap_y 30
+cpu_avg_samples 2
+override_utf8_locale no
+uppercase no # set to yes if you want all text to be in uppercase
+use_spacer no
+use_xft yes
+xftfont WenQuanYi Zen Hei:pixelsize=18
+override_utf8_locale yes
+use_spacer no
+minimum_size 396 5
+TEXT
+${font LCD:style=Bold:pixelsize=60}${alignc}${time %H:%M:%S} ${color}
+${font WenQuanYi Zen Hei:pixelsize=24}${time %Y年%b%d日 星期%a}${alignc}
+#${font WenQuanYi Zen Hei:pixelsize=24}
+${color #98c2c7}主机名: ${color}$alignr$nodename
+${color #98c2c7}内核:  ${color}$alignr$kernel
+${color #98c2c7}已开机: ${color}$alignr$uptime
+
+####|disk
+${color #98c2c7}根分区: ${color}${alignr}${fs_free /} / ${fs_size /}
+${fs_bar 4 /}
+${color #98c2c7}/media/docs分区: ${color}${alignr}${fs_free /media/docs} / ${fs_size /media/docs}
+${fs_bar 4 /media/docs}
+
+# - SYSTEM - ###############
+#${voffset -10}${font Monaco:size=28}SYSTEM $stippled_hr${font}
+#${goto 20}${voffset 0}Kernel: ${alignr}${color2}${kernel}${color}
+#${goto 20}Uptime: ${alignr}${color2}${uptime}${color}
+# |--CPU
+#${color #98c2c7}CPU使用率: ${color}$cpu%
+#$cpubar
+#${goto 20}CPU Temp:${color1}${alignr}$acpitemp${color}°C
+# CPU1 温度: $alignr${exec sensors | grep 'Core 0' | cut -c17-25}
+# CPU2 温度: $alignr${exec sensors | grep 'Core 1' | cut -c17-25}
+${color #98c2c7}CPU占用:${color}
+ ${top name 1} ${alignr}${top cpu 1}
+ ${top name 2} ${alignr}${top cpu 2}
+ ${top name 3} ${alignr}${top cpu 3}
+ ${top name 4} ${alignr}${top cpu 4}
+ ${top name 5} ${alignr}${top cpu 5}
+ ${top name 6} ${alignr}${top cpu 6}
+ ${top name 7} ${alignr}${top cpu 7}
+ ${top name 8} ${alignr}${top cpu 8}
+
+${goto 20}CPU1: ${font Monaco:size=18}${color1}${goto 90}${cpu cpu1}%${color}${font} ${alignr}${color2}${cpubar cpu1 8,200 3465A4 204A87}${color}
+${goto 20}CPU2: ${font Monaco:size=18}${color1}${goto 90}${cpu cpu2}%${color}${font} ${alignr}${color2}${cpubar cpu2 8,200 3465A4 204A87}${color}
+${goto 20}CPU3: ${font Monaco:size=18}${color1}${goto 90}${cpu cpu3}%${color}${font} ${alignr}${color2}${cpubar cpu3 8,200 3465A4 204A87}${color}
+${goto 20}CPU4: ${font Monaco:size=18}${color1}${goto 90}${cpu cpu4}%${color}${font} ${alignr}${color2}${cpubar cpu4 8,200 3465A4 204A87}${color}
+${goto 20}CPU5: ${font Monaco:size=18}${color1}${goto 90}${cpu cpu5}%${color}${font} ${alignr}${color2}${cpubar cpu5 8,200 3465A4 204A87}${color}
+${goto 20}CPU6: ${font Monaco:size=18}${color1}${goto 90}${cpu cpu6}%${color}${font} ${alignr}${color2}${cpubar cpu6 8,200 3465A4 204A87}${color}
+${goto 20}CPU7: ${font Monaco:size=18}${color1}${goto 90}${cpu cpu7}%${color}${font} ${alignr}${color2}${cpubar cpu7 8,200 3465A4 204A87}${color}
+${goto 20}CPU8: ${font Monaco:size=18}${color1}${goto 90}${cpu cpu8}%${color}${font} ${alignr}${color2}${cpubar cpu8 8,200 3465A4 204A87}${color}
+${color #98c2c7}CPU使用率: ${color}$cpu%
+#$cpubar
+${cpugraph 100,600 000000 5000a0}
+
+
+#####|network
+${downspeedgraph wlan0 82,600  ff0000 0000ff } ${color} #324D23 77B753}
+#${upspeedgraph wlan0 82,600  ff0000 0000ff }  #324D23 77B753}
+${font WenQuanYi Zen Hei:pixelsize=24}
+${color #98c2c7}网络使用:${color}
+下载速度:$alignr${downspeed wlan0} k/s
+上传速度:$alignr${upspeed wlan0} k/s
+##|mem
+${color #98e2c7}物理内存：${color}${alignr}$mem / $memmax
+${membar}
