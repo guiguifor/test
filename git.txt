@@ -38,9 +38,9 @@ git常用命令
 				rm  aliasname			删除远端仓库关联
 
 
-	git fetch		从远端创建获取代码库
-	git pull		下载远程代码并合并
-	git push		上传到远程仓库并合并
+	git fetch							从远端创建获取代码库
+	git pull alisname master			下载远程代码并合并
+	git push							上传到远程仓库并合并
 				-u [aliasname] master  本地xx上传到远端master
 
 
